@@ -42,4 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
 
-Route::get('news', [NoticiaController::class, 'index'])->name('news.index');
+
+Route::prefix('noticias')->group(function() {
+	Route::resource('/', NoticiaController::class);
+});

@@ -10,6 +10,16 @@ class NoticiaController extends Controller
     public function index() {
         $noticias = Noticia::all();
 
-        dd($noticias);
+        return view('noticias.noticias', ['noticias'=>$noticias]);
     }
+
+    public function create() {
+        return view('noticias.create');
+    }
+
+    public function store(Request $request) {
+        Noticia::create($request->all());
+        return redirect()->route('index');
+    }
+
 }
