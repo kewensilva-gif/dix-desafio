@@ -10,11 +10,10 @@ class Noticia extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id',
         'title',
         'content',
         'id_user'
     ];
 
-    
+
 }

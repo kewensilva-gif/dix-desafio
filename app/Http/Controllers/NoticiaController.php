@@ -14,7 +14,7 @@ class NoticiaController extends Controller
     public function index() {
         $noticias = Noticia::all();
         $noticias_user = [];
-        
+
         foreach ($noticias as $noticia) {
             if($noticia->id_user == auth()->id()) {
                 array_push($noticias_user, $noticia);
@@ -30,9 +30,10 @@ class NoticiaController extends Controller
     }
 
     public function store(Request $request) {
-        Noticia::create($request->all());
+        $data_insert = $request->all();
+        $data_insert['id_user'] = auth()->id();
+
+        Noticia::create($data_insert);
         return redirect()->route('index');
     }
-    
-
 }
