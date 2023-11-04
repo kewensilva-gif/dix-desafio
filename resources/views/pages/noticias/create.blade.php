@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['pageSlug' => 'dashboard'])
 @section('content')
 <form action="{{ route('store') }}" method="POST">
     @csrf
@@ -16,8 +16,8 @@
         <input class="form-control" id="content" name="content">
     </div>
     <div class="mb-3 form-group">
-        <label for="id_user" class="form-label">Email address</label>
-        <input type="text" class="form-control" id="id_user" placeholder="name@example.com" name="id_user">
+        <label for="id_user" class="form-label">id_user</label>
+        <input type="text" class="form-control" id="id_user" placeholder="name@example.com" name="id_user" value="{{$user_id}}" disabled>
     </div>
     <div>
         <input type="submit" class="btn btn-primary">

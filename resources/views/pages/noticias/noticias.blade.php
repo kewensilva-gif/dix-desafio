@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['pageSlug' => 'dashboard'])
 @section('content')
 @foreach($noticias as $noticia)
 <section>
@@ -6,8 +6,8 @@
     <div class="card-body">
       <h5 class="card-title">{{ $noticia->title }}</h5>
       <p class="card-text">{{ $noticia->content }} </p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
+      <a href="#" class="card-link">Remover</a>
+      <a href="#" class="card-link">Editar</a>
     </div>
   </div>
 

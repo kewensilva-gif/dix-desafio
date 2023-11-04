@@ -15,4 +15,6 @@ class Noticia extends Model
         'content',
         'id_user'
     ];
+
+    
 }
