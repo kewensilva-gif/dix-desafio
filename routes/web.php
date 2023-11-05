@@ -45,4 +45,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::prefix('noticias')->group(function() {
 	Route::resource('/', NoticiaController::class);
+	Route::get('/{id}/edit', [NoticiaController::class,'edit'])->where('id', '[0-9]+')->name('noticias-edit');
+	Route::put('/{id}', [NoticiaController::class,'update'])->where('id', '[0-9]+')->name('noticias-update');
 });

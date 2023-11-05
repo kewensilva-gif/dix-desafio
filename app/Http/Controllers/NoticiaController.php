@@ -36,4 +36,20 @@ class NoticiaController extends Controller
         Noticia::create($data_insert);
         return redirect()->route('index');
     }
+
+    public function edit($id) {
+        $edit_noticia = Noticia::where('id', $id)->first();
+        if(!empty($edit_noticia)) {
+            return view('pages.noticias.edit', ['edit_noticia' => $edit_noticia]);
+        } else {
+            return redirect()->route('index');
+        }
+    }
+
+    public function update(Request $request, $id) {
+        $noticias = Noticia::find($id);
+        $noticias->update($request->all());
+
+        return redirect()->route('index');
+    }
 }
