@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NoticiaController;
 
@@ -48,4 +49,8 @@ Route::prefix('noticias')->group(function() {
 	Route::get('/{id}/edit', [NoticiaController::class,'edit'])->where('id', '[0-9]+')->name('noticias-edit');
 	Route::put('/{id}', [NoticiaController::class,'update'])->where('id', '[0-9]+')->name('noticias-update');
 	Route::delete('/{id}', [NoticiaController::class,'destroy'])->where('id', '[0-9]+')->name('noticias-destroy');
+});
+
+Route::group(['middleware'=> 'admin'], function () {
+	Route::get('admin/list_users', [UserController::class,'getUsers'])->name('admin-getUsers');
 });

@@ -18,4 +18,10 @@ class UserController extends Controller
     {
         return view('users.index', ['users' => $model->paginate(15)]);
     }
+
+    public function getUsers(){
+
+        $users = User::all();
+        return view('pages.listagem-usuarios.lista_usuarios', ['users'=> User::all()]);
+    }
 }

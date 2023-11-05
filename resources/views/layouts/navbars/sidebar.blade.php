@@ -5,7 +5,7 @@
             <a href="#" class="simple-text logo-normal">{{ _('White Dashboard') }}</a>
         </div>
         <ul class="nav">
-            <li @if ($pageSlug == 'dashboard') class="active " @endif>
+            <li @if ($pageSlug == 'dashboard') class="active" @endif>
                 <a href="{{ route('home') }}">
                     <i class="tim-icons icon-chart-pie-36"></i>
                     <p>{{ _('Dashboard') }}</p>
@@ -41,6 +41,14 @@
                     <p>{{ _('Notícias') }}</p>
                 </a>
             </li>
+            @if($access_level == 1)
+            <li @if ($pageSlug == 'users') class="active " @endif>
+                <a href="{{ route('index') }}">
+                    <i class="tim-icons icon-atom"></i>
+                    <p>{{ _('Usuários') }}</p>
+                </a>
+            </li>
+            @endif
             <li @if ($pageSlug == 'icons') class="active " @endif>
                 <a href="{{ route('pages.icons') }}">
                     <i class="tim-icons icon-atom"></i>

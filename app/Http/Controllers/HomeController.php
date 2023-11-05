@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 class HomeController extends Controller
 {
     /**
@@ -21,6 +21,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $user_id = auth()->id();
+        $access_level = User::find($user_id);
+        return view('dashboard', ['access_level' => $access_level->admin]);
     }
 }
