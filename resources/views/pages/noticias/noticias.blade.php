@@ -10,8 +10,15 @@
       <div class="card-body">
         <h5 class="card-title">{{ $noticia->title }}</h5>
         <p class="card-text">{{ $noticia->content }} </p>
-        <a href="#" class="card-link">Remover</a>
-        <a href="{{ route('noticias-edit', ['id' => $noticia->id]) }}" class="card-link">Editar</a>
+        <!-- <a href="{{ route('noticias-destroy', ['id'=>$noticia->id]) }}" class="card-link">Remover</a> -->
+        <div class="d-flex">
+          <form action="{{ route('noticias-destroy', ['id' => $noticia->id]) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <input type="submit" value="Remover" class="bg-transparent border-0 text-primary">
+          </form>
+          <a href="{{ route('noticias-edit', ['id' => $noticia->id]) }}" class="card-link">Editar</a>
+        </div>
       </div>
     </div>
     @endforeach

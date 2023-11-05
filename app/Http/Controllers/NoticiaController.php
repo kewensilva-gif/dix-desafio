@@ -52,4 +52,10 @@ class NoticiaController extends Controller
 
         return redirect()->route('index');
     }
+
+    public function destroy($id) {
+        $noticia = Noticia::find($id);
+        $noticia->delete();
+        return redirect()->route('index');
+    }
 }
