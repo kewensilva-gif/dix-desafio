@@ -53,4 +53,7 @@ Route::prefix('noticias')->group(function() {
 
 Route::group(['middleware'=> 'admin'], function () {
 	Route::get('admin/list_users', [UserController::class,'getUsers'])->name('admin-getUsers');
+	Route::get('admin/user/{id}/edit', [UserController::class,'edit'])->where('id', '[0-9]+')->name('admin-user-edit');
+	Route::put('admin/user/{id}', [UserController::class, 'update'])->where('id', '[0-9]+')->name('admin-user-update');
+	Route::delete('admin/user/{id}', [UserController::class, 'destroy'])->where('id', '[0-9]+')->name('admin-user-destroy');
 });
