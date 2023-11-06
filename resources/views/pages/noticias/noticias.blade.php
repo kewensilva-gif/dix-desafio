@@ -6,19 +6,19 @@
   </div>
   <div class="d-flex flex-wrap">
     @foreach($noticias as $noticia)
-    <div class="card mx-2" style="width: 18rem;">
+    <div class="card mx-2 position-relative" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">{{ $noticia->title }}</h5>
         <p class="card-text">{{ $noticia->content }} </p>
-        <!-- <a href="{{ route('noticias-destroy', ['id'=>$noticia->id]) }}" class="card-link">Remover</a> -->
-        <div class="d-flex">
-          <form action="{{ route('noticias-destroy', ['id' => $noticia->id]) }}" method="POST">
+        
+          <form  action="{{ route('noticias-destroy', ['id' => $noticia->id]) }}" method="POST">
             @csrf
             @method('DELETE')
-            <input type="submit" value="Remover" class="bg-transparent border-0 text-primary">
+            
+              <input type="submit" name="sub" value="x" class=" rounded-circle px-2 bg-danger border-0 text-white" style="cursor: pointer; position: absolute; top: 5%; right: 2%;">
+            
           </form>
-          <a href="{{ route('noticias-edit', ['id' => $noticia->id]) }}" class="card-link">Editar</a>
-        </div>
+          <a href="{{ route('noticias-edit', ['id' => $noticia->id]) }}" class="card-link text-info" style="position: absolute; bottom: 5%; right: 3%;">Editar <icon class="ml-1 tim-icons icon-pencil" ></icon></a>
       </div>
     </div>
     @endforeach

@@ -23,7 +23,7 @@
             <td>{{ $user->email }}</td>
             <td>
                 <div class="d-flex">
-                    <a style="cursor: pointer;" class=" mr-2 tim-icons icon-pencil text-primary cursor-pointer"></a><a style="cursor: pointer;" class="ml-2 tim-icons icon-simple-remove text-primary cursor-pointer"></a>
+                    <a style="cursor: pointer;" class="mr-2 tim-icons icon-pencil text-info cursor-pointer"></a><a style="cursor: pointer;" class="ml-2 tim-icons icon-simple-remove text-danger cursor-pointer"></a>
                 </div>
             </td>
         </tr>
