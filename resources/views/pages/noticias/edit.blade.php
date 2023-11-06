@@ -10,7 +10,7 @@
         </div>
             <div class="mb-3 form-group">
                 <label for="content" class="form-label">Conteúdo</label>
-                <textarea class="form-control" id="content" placeholder="Digite o conteúdo da notícia" name="content">{{ $edit_noticia->title }}</textarea>
+                <textarea class="form-control" id="content" placeholder="Digite o conteúdo da notícia" name="content">{{ $edit_noticia->content }}</textarea>
             </div>
             <div>
                 <input type="submit" class="btn btn-primary">

@@ -1,96 +1,24 @@
 <div class="sidebar">
     <div class="sidebar-wrapper">
         <div class="logo">
-            <a href="#" class="simple-text logo-mini">{{ _('WD') }}</a>
-            <a href="#" class="simple-text logo-normal">{{ _('White Dashboard') }}</a>
+            <a href="#" class="simple-text logo-mini">{{ _('ND') }}</a>
+            <a href="#" class="simple-text logo-normal">{{ _('News Dashboard') }}</a>
         </div>
         <ul class="nav">
-            <li @if ($pageSlug == 'dashboard') class="active" @endif>
-                <a href="{{ route('home') }}">
-                    <i class="tim-icons icon-chart-pie-36"></i>
-                    <p>{{ _('Dashboard') }}</p>
-                </a>
-            </li>
-            <li>
-                <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
-                    <i class="fab fa-laravel" ></i>
-                    <span class="nav-link-text" >{{ __('Laravel Examples') }}</span>
-                    <b class="caret mt-1"></b>
-                </a>
-
-                <div class="collapse show" id="laravel-examples">
-                    <ul class="nav pl-4">
-                        <li @if ($pageSlug == 'profile') class="active " @endif>
-                            <a href="{{ route('profile.edit')  }}">
-                                <i class="tim-icons icon-single-02"></i>
-                                <p>{{ _('User Profile') }}</p>
-                            </a>
-                        </li>
-                        <li @if ($pageSlug == 'users') class="active " @endif>
-                            <a href="{{ route('user.index')  }}">
-                                <i class="tim-icons icon-bullet-list-67"></i>
-                                <p>{{ _('User Management') }}</p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
             <li @if ($pageSlug == 'users') class="active " @endif>
-                <a href="{{ route('index') }}">
-                    <i class="tim-icons icon-atom"></i>
-                    <p>{{ _('Notícias') }}</p>
+                <a style="margin-left: 1.5rem; display: flex; gap: 1rem; align-items: center;" href="{{ route('index') }}">
+                    <svg fill="#ffffff" xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512"><path d="M168 80c-13.3 0-24 10.7-24 24V408c0 8.4-1.4 16.5-4.1 24H440c13.3 0 24-10.7 24-24V104c0-13.3-10.7-24-24-24H168zM72 480c-39.8 0-72-32.2-72-72V112C0 98.7 10.7 88 24 88s24 10.7 24 24V408c0 13.3 10.7 24 24 24s24-10.7 24-24V104c0-39.8 32.2-72 72-72H440c39.8 0 72 32.2 72 72V408c0 39.8-32.2 72-72 72H72zM176 136c0-13.3 10.7-24 24-24h96c13.3 0 24 10.7 24 24v80c0 13.3-10.7 24-24 24H200c-13.3 0-24-10.7-24-24V136zm200-24h32c13.3 0 24 10.7 24 24s-10.7 24-24 24H376c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 80h32c13.3 0 24 10.7 24 24s-10.7 24-24 24H376c-13.3 0-24-10.7-24-24s10.7-24 24-24zM200 272H408c13.3 0 24 10.7 24 24s-10.7 24-24 24H200c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 80H408c13.3 0 24 10.7 24 24s-10.7 24-24 24H200c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg>
+                    <p style="font-size: 12px;">{{ _('Notícias') }}</p>
                 </a>
             </li>
             @if (Auth::user()->isAdmin())
             <li @if ($pageSlug == 'users') class="active " @endif>
-                <a href="{{ route('admin-getUsers') }}">
-                    <i class="tim-icons icon-atom"></i>
-                    <p>{{ _('Usuários') }}</p>
+                <a style="margin-left: 1.5rem; display: flex; gap: 1rem; align-items: center;" href="{{ route('admin-getUsers') }}">
+                <svg fill="#ffffff" xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+                    <p style="font-size: 12px;">{{ _('Usuários') }}</p>
                 </a>
             </li>
             @endif
-            <li @if ($pageSlug == 'icons') class="active " @endif>
-                <a href="{{ route('pages.icons') }}">
-                    <i class="tim-icons icon-atom"></i>
-                    <p>{{ _('Icons') }}</p>
-                </a>
-            </li>
-            <li @if ($pageSlug == 'maps') class="active " @endif>
-                <a href="{{ route('pages.maps') }}">
-                    <i class="tim-icons icon-pin"></i>
-                    <p>{{ _('Maps') }}</p>
-                </a>
-            </li>
-            <li @if ($pageSlug == 'notifications') class="active " @endif>
-                <a href="{{ route('pages.notifications') }}">
-                    <i class="tim-icons icon-bell-55"></i>
-                    <p>{{ _('Notifications') }}</p>
-                </a>
-            </li>
-            <li @if ($pageSlug == 'tables') class="active " @endif>
-                <a href="{{ route('pages.tables') }}">
-                    <i class="tim-icons icon-puzzle-10"></i>
-                    <p>{{ _('Table List') }}</p>
-                </a>
-            </li>
-            <li @if ($pageSlug == 'typography') class="active " @endif>
-                <a href="{{ route('pages.typography') }}">
-                    <i class="tim-icons icon-align-center"></i>
-                    <p>{{ _('Typography') }}</p>
-                </a>
-            </li>
-            <li @if ($pageSlug == 'rtl') class="active " @endif>
-                <a href="{{ route('pages.rtl') }}">
-                    <i class="tim-icons icon-world"></i>
-                    <p>{{ _('RTL Support') }}</p>
-                </a>
-            </li>
-            <li class=" {{ $pageSlug == 'upgrade' ? 'active' : '' }} bg-info">
-                <a href="{{ route('pages.upgrade') }}">
-                    <i class="tim-icons icon-spaceship"></i>
-                    <p>{{ _('Upgrade to PRO') }}</p>
-                </a>
-            </li>
         </ul>
     </div>
 </div>

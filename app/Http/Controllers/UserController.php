@@ -30,19 +30,20 @@ class UserController extends Controller
         if(!empty($edit_user)) {
             return view('pages.listagem-usuarios.edit', ['edit_user' => $edit_user]);
         } else {
-            return redirect()->route('pages.listagem-usuarios.lista_usuarios');
+            return redirect()->route('admin-getUsers');
         }
     }
 
     public function update(Request $request, $id) {
         $user = User::find($id);
         $user->update($request->all());
-        return redirect()->route('pages.listagem-usuarios.lista_usuarios')->with('success','');
+        
+        return redirect()->route('admin-getUsers');
     }
 
     public function destroy($id) {
         $user = User::find($id);
         $user->delete();
-        return redirect()->route('pages.listagem-usuarios.lista_usuarios');
+        return redirect()->route('admin-getUsers');
     }
 }

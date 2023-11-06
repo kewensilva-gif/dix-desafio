@@ -5,6 +5,7 @@
     <a href="{{ route('create') }}" class="btn btn-secondary ">Nova notícia</a>
   </div>
   <div class="d-flex flex-wrap">
+    @if($noticias != null)
     @foreach($noticias as $noticia)
     <div class="card mx-2 position-relative" style="width: 18rem;">
       <div class="card-body">
@@ -22,6 +23,9 @@
       </div>
     </div>
     @endforeach
+    @else
+    <div style="margin: 0 auto;">Ainda não há notícias cadastradas</div>
+    @endif
   </div>
 </section>
 @endsection

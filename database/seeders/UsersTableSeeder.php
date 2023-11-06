@@ -4,7 +4,7 @@ namespace Database\Seeders;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-
+use App\Models\User;
 class UsersTableSeeder extends Seeder
 {
     /**
@@ -28,11 +28,13 @@ class UsersTableSeeder extends Seeder
             'id' => 2,
             'admin' => 0,
             'name' => 'Kewen Silva',
-            'email' => 'silvakewen52@gmail.com',
+            'email' => 'silvakewen@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+        User::factory(3)->create();
     }
 }
