@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->admin === 1;
     }
+
+    public function noticias()
+    {
+        return $this->hasMany(Noticia::class);
+    }
 }

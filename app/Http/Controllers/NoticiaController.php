@@ -11,17 +11,31 @@ class NoticiaController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index() {
+    public function index(Request $request) {
+
+        $search = $request->input('search');
         $noticias = Noticia::all();
         $noticias_user = [];
-
-        foreach ($noticias as $noticia) {
-            if($noticia->id_user == auth()->id()) {
-                array_push($noticias_user, $noticia);
-            } 
-        }
         
-        return view('pages.noticias.noticias', ['noticias'=>$noticias_user]);
+        if($search) { 
+            $noticias_user = [];
+            $noticias = Noticia::where([
+                ['title','like','%'.$search.'%'],
+            ])->get();   
+            foreach ($noticias as $noticia) {
+                if($noticia->id_user == auth()->id()) {
+                    array_push($noticias_user, $noticia);
+                } 
+            }
+        } else {
+            foreach ($noticias as $noticia) {
+                if($noticia->id_user == auth()->id()) {
+                    array_push($noticias_user, $noticia);
+                } 
+            }
+        }
+
+        return view('pages.noticias.noticias', ['noticias'=>$noticias_user, 'search'=>$search]);
     }
 
     public function create() {
