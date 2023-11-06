@@ -43,7 +43,7 @@
             </li>
             @if (Auth::user()->isAdmin())
             <li @if ($pageSlug == 'users') class="active " @endif>
-                <a href="{{ route('index') }}">
+                <a href="{{ route('admin-getUsers') }}">
                     <i class="tim-icons icon-atom"></i>
                     <p>{{ _('Usuários') }}</p>
                 </a>
