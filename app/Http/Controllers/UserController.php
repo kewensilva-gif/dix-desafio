@@ -20,7 +20,6 @@ class UserController extends Controller
     }
 
     public function getUsers(){
-
         $users = User::all();
         return view('pages.listagem-usuarios.lista_usuarios', ['users'=> User::all()]);
     }

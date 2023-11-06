@@ -41,7 +41,7 @@
                     <p>{{ _('Notícias') }}</p>
                 </a>
             </li>
-            @if($access_level == 1)
+            @if (Auth::user()->isAdmin())
             <li @if ($pageSlug == 'users') class="active " @endif>
                 <a href="{{ route('index') }}">
                     <i class="tim-icons icon-atom"></i>

@@ -21,8 +21,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user_id = auth()->id();
-        $access_level = User::find($user_id);
-        return view('dashboard', ['access_level' => $access_level->admin]);
+        /* $user_id = auth()->id();
+        $access_level = User::find($user_id); */
+        return view('dashboard');
     }
 }
