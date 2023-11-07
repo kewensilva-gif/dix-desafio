@@ -9,10 +9,10 @@ class PageController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    /* public function icons()
+    public function noticias()
     {
         return view('pages.icons');
-    } */
+    }
 
     
 

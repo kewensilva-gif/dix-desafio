@@ -11,8 +11,8 @@ class NoticiaController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index(Request $request) {
 
+    public function index(Request $request) {
         $search = $request->input('search');
         $noticias = Noticia::all();
         $noticias_user = [];
@@ -40,6 +40,7 @@ class NoticiaController extends Controller
 
     public function create() {
         $user_id = auth()->id();
+        
         return view('pages.noticias.create', ['user_id'=>$user_id]);
     }
 
@@ -48,6 +49,7 @@ class NoticiaController extends Controller
         $data_insert['id_user'] = auth()->id();
 
         Noticia::create($data_insert);
+        session()->flash('mensagem', 'Nova notícia cadastrada com sucessos.');
         return redirect()->route('index');
     }
 
@@ -63,13 +65,14 @@ class NoticiaController extends Controller
     public function update(Request $request, $id) {
         $noticias = Noticia::find($id);
         $noticias->update($request->all());
-
+        session()->flash('mensagem', 'Notícia atualizada com sucesso.');
         return redirect()->route('index');
     }
-
+    
     public function destroy($id) {
         $noticia = Noticia::find($id);
         $noticia->delete();
+        session()->flash('mensagem', 'Notícia removida com sucesso.');
         return redirect()->route('index');
     }
 }

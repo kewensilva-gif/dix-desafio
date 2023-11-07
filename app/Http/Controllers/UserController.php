@@ -37,13 +37,14 @@ class UserController extends Controller
     public function update(Request $request, $id) {
         $user = User::find($id);
         $user->update($request->all());
-        
+        session()->flash('mensagem', 'Informações do usuário atualizadas com sucesso.');
         return redirect()->route('admin-getUsers');
     }
-
+    
     public function destroy($id) {
         $user = User::find($id);
         $user->delete();
+        session()->flash('mensagem', 'Usuário removido com sucesso.');
         return redirect()->route('admin-getUsers');
     }
 }
