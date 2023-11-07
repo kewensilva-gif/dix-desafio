@@ -1,6 +1,7 @@
 <?php
 namespace Database\Seeders;
 
+use App\Models\Noticia;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Noticia::factory(30)->create();
         $this->call([UsersTableSeeder::class]);
     }
 }
