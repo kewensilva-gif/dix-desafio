@@ -14,28 +14,40 @@ class NoticiaController extends Controller
 
     public function index(Request $request) {
         $search = $request->input('search');
-        $noticias = Noticia::all();
-        $noticias_user = [];
+        $noticias = $this->getNoticias($search);
         
-        if($search) { 
-            $noticias_user = [];
-            $noticias = Noticia::where([
-                ['title','like','%'.$search.'%'],
-            ])->get();   
-            foreach ($noticias as $noticia) {
-                if($noticia->id_user == auth()->id()) {
-                    array_push($noticias_user, $noticia);
-                } 
-            }
-        } else {
-            foreach ($noticias as $noticia) {
-                if($noticia->id_user == auth()->id()) {
-                    array_push($noticias_user, $noticia);
-                } 
-            }
+        return view('pages.noticias.index', ['noticias'=>$noticias, 'search'=>$search]);
+    }
+
+    // Responsável pela separação das notícias que serão exibidas
+    private function getNoticias($search) {
+        if($search) {
+            return $this->filterNoticiaBySearch($search);
         }
 
-        return view('pages.noticias.noticias', ['noticias'=>$noticias_user, 'search'=>$search]);
+        return $this->filterNoticiaByUser(Noticia::all());
+    }
+
+    // Executa a filtragem pela pesquisa e por usuário
+    private function filterNoticiaBySearch($search) {
+        $noticias = Noticia::where([
+            ['title','like','%'.$search.'%'],
+        ])->get();  
+
+        $this->filterNoticiaByUser($noticias);
+
+        return $noticias;
+    }
+
+    // Executa a filtragem por usuário
+    private function filterNoticiaByUser($noticias) {
+        $noticias_user = [];
+        foreach ($noticias as $noticia) {
+            if($noticia->id_user == auth()->id()) {
+                array_push($noticias_user, $noticia);
+            } 
+        }
+        return $noticias_user;
     }
 
     public function create() {
